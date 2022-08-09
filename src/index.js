@@ -4,10 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Import React-Router-Dom 
+import {BrowserRouter} from 'react-router-dom'; 
+// Import Redux Materials
+import { Provider } from 'react-redux';
+import {store} from './app/store';
+
+
+// const store = createStore(reducers, compose(applyMiddleware(thunk)))/
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* Provider is from Redux, BrowserRouter is from routers */}
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
