@@ -33,7 +33,10 @@ CREATE TABLE IF NOT EXISTS `template_code_login` (
   `email` varchar(64) NOT NULL,
   `fullname` varchar(64) NOT NULL,
   PRIMARY KEY (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) 
+-- ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 
 COMMIT;
 

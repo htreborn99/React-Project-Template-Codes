@@ -11,14 +11,11 @@ import SensorOccupiedTwoToneIcon from '@mui/icons-material/SensorOccupiedTwoTone
 // Testing Redux: import Redux
 import { useSelector, useDispatch } from 'react-redux';
 // Import the functions that you will need:
-import { increment,decrement } from '../features/exampleSlice'
+// import { increment,decrement } from '../features/exampleSlice'
 
 
 
 function Signup() {
-  // TO BE REMOVED TESTING REDUX 
-  const count = useSelector((state) => state.counter.count)
-
 // Username
   const [ username, setusername] = useState("")
   const handleusername = (event) => {
@@ -134,7 +131,7 @@ function Signup() {
             />
           </Box>
           <Box sx={{display: 'flex',alignItems: 'center','& > :not(style)': { m: 1 }, justifyContent: 'center'}}>
-            <Button endIcon={<SensorOccupiedTwoToneIcon/>} variant="contained" color="secondary" onClick={handlesetsubmit}>Sign Up</Button>
+            <Button endIcon={<SensorOccupiedTwoToneIcon/>} variant="contained" color="secondary" onClick={signup}>Sign Up</Button>
           </Box>
 
 

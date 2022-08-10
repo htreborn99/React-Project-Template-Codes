@@ -1,4 +1,3 @@
-import email
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -6,7 +5,9 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/template_code_login'
+# Windows Codes: "Remove the charset=utf8 if it is not working"
+# Apple Codes
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://localhost:3306/template_code_login?charset=utf8mb4&collation=utf8mb4_general_ci'
 # The SQLAlchemy Database URI format is: dialect+driver://username:password@host:port/database
 
 
@@ -103,3 +104,4 @@ def signin(loginID):
 
 if __name__ == "__main__":
     app.run(port=5000,debug=True)
+    # pp.run(host='0.0.0.0'

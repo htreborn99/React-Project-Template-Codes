@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {NavLink,BrowserRouter} from 'react-router-dom';
+// Import Redux-Toolkit
+import { useSelector, useDispatch } from 'react-redux';
+import { setlogin, setpassword, setemail, setfullname } from '../features/loginSlice'
+
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,11 +20,21 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import HomeIcon from '@mui/icons-material/Home';
 
+
 const Navbar = () => {
+    const dispatch = useDispatch();
+    const login_data = useSelector((state) => state.login.login)
 
+    const signout = () =>{
+        dispatch(setlogin(""))
+        dispatch(setemail(""))
+        dispatch(setfullname(""))
+        dispatch(setpassword(""))
+    }
 
-    return (
-        <div>
+    if (login_data == ""){
+        return (
+            <div>
                 <AppBar position="static">
                     <Toolbar >
                         <Box display="flex">
@@ -53,8 +67,35 @@ const Navbar = () => {
 
                     </Toolbar>
                 </AppBar>
-        </div>
-    )
+            </div>
+            )
+        }
+    else{
+        return(
+            <div>
+                <AppBar position="static">
+                    <Toolbar >
+                        <Box display="flex">
+                            <Button sx={{color:"white"}} variant="outlined" disableFocusRipple >Welcome Back, {login_data}</Button>
+                            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/">
+                                <Button sx={{color:"white"}} variant="outlined" startIcon={<HomeIcon/>} > 
+                                    Home 
+                                </Button>
+                            </NavLink>
+                            <Button sx={{color:"white"}} variant="outlined" > 
+                                <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/profile"> Profile </NavLink>
+                            </Button>
+
+                            <Button sx={{color:"white"}} variant="outlined" onClick={signout} > 
+                                Sign Out
+                            </Button>
+                        </Box>
+
+                    </Toolbar>
+                </AppBar>
+            </div>
+        )
+    }
 }
 
 export default Navbar
