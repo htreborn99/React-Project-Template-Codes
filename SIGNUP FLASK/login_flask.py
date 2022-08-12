@@ -5,7 +5,9 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-# Windows Codes: "Remove the charset=utf8 if it is not working"
+# Windows Codes: 
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/template_code_login'
+
 # Apple Codes
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://localhost:3306/template_code_login?charset=utf8mb4&collation=utf8mb4_general_ci'
 # The SQLAlchemy Database URI format is: dialect+driver://username:password@host:port/database
